@@ -1,0 +1,37 @@
+// Fernanda Magaña Zapata A01663341
+// Vanessa Jacqueline Troncoso Ortega A01663244
+
+// MARIE program - Sensor Reading 12 bits/ms
+// Store 50 elements
+
+Load Addr // We load the address of the first element
+Store Next // Create a pointer
+
+Loop, Input
+Store Value // User enters input and MARIE stores it
+
+Load Value
+StoreI Next // Store the AC value in the address of Next
+
+// Go to the next position in memory
+Load Next 
+Add One
+Store Next 
+
+Load Count // Count = 0, declared below
+Add One // Add one for each element to know how many we have
+Store Count
+
+Subt Elements // Substract 50 from count (AC)
+SkipCond 400// If 0, it finishes
+Jump Loop // If not 0, it continues
+
+Halt
+
+Addr, HEX 200 // So it does not collapse between instructions and inputs
+Next, HEX 0
+Value, DEC 0
+Count, DEC 0
+Elements, DEC 50 // Already declared 
+One, DEC 1
+
